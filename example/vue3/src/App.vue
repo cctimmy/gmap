@@ -6,7 +6,8 @@
 <script lang="tsx" setup>
 import { createApp, defineComponent, onMounted, ref } from "vue";
 import MapMarker from "./components/MapMarker.vue";
-import { GMap, GMapAdvancedMarkers } from "@/../lib/index";
+import MapMarkerLabel from "./components/MapMarkerLabel.vue";
+import { GMap, GMapAdvancedMarkers, openMarkerLabel } from "@/../lib/index";
 import type { IGMapAdvancedMarkersOpts } from "@/../lib/index";
 import locations from "@/assets/locations.json";
 
@@ -47,7 +48,13 @@ const addMarkers = (mapInstance: any) => {
       return [vm.mount(root).$el, () => vm.unmount()];
     },
     onClick: (mIns) => {
-      console.log("marker click :", mIns);
+      openMarkerLabel({
+        mark: mIns,
+        renderer: (root) => {
+          const vm = createApp(MapMarkerLabel);
+          return [vm.mount(root).$el, () => vm.unmount()];
+        },
+      });
     },
   }));
   GMapAdvancedMarkers.setClusterMarkers(markers, mapInstance);

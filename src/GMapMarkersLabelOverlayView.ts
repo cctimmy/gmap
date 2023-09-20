@@ -46,6 +46,7 @@ const getClass = (OverlayView: typeof google.maps.OverlayView) => class GMapMark
             this.dom.style.left = `${x + 20}px`
             this.dom.style.top = `${y - 20}px`
             this.dom.style.zIndex = `${GMapAdvancedMarkers.incrementalDomIdx}`
+            this.dom.style.position = 'absolute'
         } catch {
             throw (new Error(" marker label drawing fail !"))
         }
@@ -53,12 +54,9 @@ const getClass = (OverlayView: typeof google.maps.OverlayView) => class GMapMark
 
     destroy() {
         this.destroyer && this.destroyer(this)
-
         if (this.dom.parentNode) {
             this.dom.parentNode.removeChild(this.dom)
         }
-        this.dom = null as any
-        this.setMap(null)
     }
 
     static getInstance(properties: IGMapMarkersLabelOverlayViewOption) {
