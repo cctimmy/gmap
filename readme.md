@@ -67,11 +67,11 @@ interface IGMapAdvancedMarkersOpts extends IMarkerOption {
 
 ```javascript
 "rollup-plugin-dts": "^4.2.1", // 自動生成 ts 的型別定義擋
-"rollup-plugin-esbuild": "^4.9.1" // 編譯 ts 成現代 ESmodule
+"rollup-plugin-esbuild": "^4.9.1" // 編譯 ts 成 ESmodule
 ```
 
 - `./rollup.config.js` 使用 `./example/*` 內容作為範例，因此除了 `./dist` 還要額外編譯結果到 ./example 內
-
 - `.npmrc` 設定 `registry` 公開 或 私有自建的 位置
-  - 如個人公開位置 : 執行 `npm login` 登入個人帳號(免費版只能公開，所以需要設定`access=public`)，然後執行`npm run publish`就能按照`packages.json`內的相關對應設定來發布
+
+  - 如個人公開位置 : 執行 `npm login` 登入個人帳號(免費版只能公開，所以需要設定 `access=public`)，然後執行 `npm run publish`就能按照 `packages.json`內的相關對應設定來發布
   - [私建在 Azure devops artifacts feed](https://learn.microsoft.com/en-us/azure/devops/artifacts/npm/upstream-sources?view=azure-devops)
