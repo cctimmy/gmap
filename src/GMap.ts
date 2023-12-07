@@ -1,5 +1,10 @@
 import GMapLoader from "./GMapLoader"
 
+interface ICreateMapOpts extends google.maps.MapOptions {
+    mapId: string
+    apiKey: string
+}
+
 export class GMap {
 
     static getMap(mapId: string) {
@@ -11,8 +16,8 @@ export class GMap {
     /**
      * 建立基本地圖，需要加載 MarkerLibrary、MapsLibrary、CoreLibrary
      */
-    static async createMap(mapDiv: HTMLElement, opts: google.maps.MapOptions & { mapId: string }) {
-        await GMapLoader.load()
+    static async createMap(mapDiv: HTMLElement, opts: ICreateMapOpts) {
+        await GMapLoader.load({ apiKey: opts.apiKey })
         if (GMap.idGMmapInsMap.has(opts.mapId)) {
             return GMap.idGMmapInsMap.get(opts.mapId)
         }

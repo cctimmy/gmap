@@ -28,6 +28,7 @@ onMounted(async () => {
       clickableIcons: false,
       disableDefaultUI: true,
       zoom: 12,
+      apiKey: "",
     });
     mapInstance = gMapIns;
     console.log("g map ins", gMapIns === mapInstance);
